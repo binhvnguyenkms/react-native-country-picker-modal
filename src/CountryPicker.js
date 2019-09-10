@@ -281,18 +281,6 @@ componentDidUpdate (prevProps) {
     this.setState({ modalVisible: true })
   }
 
-  focusFilterInput() {
-    if (this.filterInputRef) {
-      this.filterInputRef.focus();
-    }
-  }
-
-  blurFilterInput() {
-    if (this.filterInputRef) {
-      this.filterInputRef.blur();
-    }
-  }
-
   scrollTo(letter) {
     // find position of first country that starts with letter
     const index = this.state.cca2List
