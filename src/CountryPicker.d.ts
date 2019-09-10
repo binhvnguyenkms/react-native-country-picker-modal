@@ -398,6 +398,8 @@ export interface CountryPickerProps {
 
 export default class CountryPicker extends React.Component<CountryPickerProps> {
   openModal: () => void
+  focusFilterInput: () => void
+  blurFilterInput: () => void
 }
 
 export function getAllCountries(): Country[]
