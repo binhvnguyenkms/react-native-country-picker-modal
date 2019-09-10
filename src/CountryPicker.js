@@ -57,7 +57,6 @@ export const getAllCountries = () =>
   cca2List.map(cca2 => ({ ...countries[cca2], cca2 }))
 
 export default class CountryPicker extends Component {
-  filterInputRef = undefined;
   static propTypes = {
     cca2: PropTypes.string.isRequired,
     translation: PropTypes.string,
@@ -144,8 +143,6 @@ export default class CountryPicker extends Component {
   constructor(props) {
     super(props)
     this.openModal = this.openModal.bind(this)
-    this.focusFilterInput = this.focusFilterInput.bind(this)
-    this.blurFilterInput = this.blurFilterInput.bind(this)
 
     setCountries(props.flagType)
     let countryList = [...props.countryList]
@@ -275,8 +272,6 @@ componentDidUpdate (prevProps) {
   }
 
   openModal = this.openModal.bind(this)
-  focusFilterInput = this.focusFilterInput.bind(this)
-  blurFilterInput = this.blurFilterInput.bind(this)
 
   // dimensions of country list and window
   itemHeight = getHeightPercent(7)
@@ -398,7 +393,6 @@ componentDidUpdate (prevProps) {
     ) : (
       <TextInput
         testID="text-input-country-filter"
-        ref={(ref) => { this.filterInputRef = ref; }}
         autoFocus={autoFocusFilter}
         autoCorrect={false}
         placeholder={filterPlaceholder}

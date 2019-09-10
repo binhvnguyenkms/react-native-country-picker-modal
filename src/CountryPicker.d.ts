@@ -327,6 +327,10 @@ export interface CountryPickerProps {
    */
   onClose?: () => void
   /**
+   * Fires at most once per frame during scrolling list country
+   */
+  onScroll?: (event: any) => void
+  /**
    * List of custom CCA2 countries to render in the list. Use getAllCountries to filter what you need if you want to pass in a custom list
    */
   countryList?: CCA2Code[]
@@ -398,8 +402,6 @@ export interface CountryPickerProps {
 
 export default class CountryPicker extends React.Component<CountryPickerProps> {
   openModal: () => void
-  focusFilterInput: () => void
-  blurFilterInput: () => void
 }
 
 export function getAllCountries(): Country[]
