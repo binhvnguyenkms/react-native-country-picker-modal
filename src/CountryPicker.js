@@ -62,6 +62,7 @@ export default class CountryPicker extends Component {
     translation: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onClose: PropTypes.func,
+    onScroll: PropTypes.func,
     closeable: PropTypes.bool,
     filterable: PropTypes.bool,
     children: PropTypes.node,
@@ -82,7 +83,8 @@ export default class CountryPicker extends Component {
     renderFilter: PropTypes.func,
     showCallingCode: PropTypes.bool,
     filterOptions: PropTypes.object,
-    showCountryNameWithFlag: PropTypes.bool
+    showCountryNameWithFlag: PropTypes.bool,
+    inputRef: PropTypes.element,
   }
 
   static defaultProps = {
@@ -380,6 +382,7 @@ componentDidUpdate (prevProps) {
     ) : (
       <TextInput
         testID="text-input-country-filter"
+        ref={this.props.inputRef}
         autoFocus={autoFocusFilter}
         autoCorrect={false}
         placeholder={filterPlaceholder}
@@ -442,12 +445,15 @@ componentDidUpdate (prevProps) {
                   data={this.state.flatListMap}
                   ref={flatList => (this._flatList = flatList)}
                   initialNumToRender={30}
-onScrollToIndexFailed={()=>{}}
+                  onScrollToIndexFailed={()=>{}}
                   renderItem={country => this.renderCountry(country.item.key)}
                   keyExtractor={(item) => item.key}
                   getItemLayout={(data, index) => (
                     { length: this.itemHeight, offset: this.itemHeight * index, index }
                   )}
+                  onScroll={(event) => {
+                    this.props.onScroll(event);
+                  }}
                 />
                 {!this.props.hideAlphabetFilter && (
                   <ScrollView
