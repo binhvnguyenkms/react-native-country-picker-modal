@@ -390,6 +390,10 @@ export interface CountryPickerProps {
     onChange: CountryPickerProps['onChange']
     onClose: CountryPickerProps['onClose']
   }) => React.ReactNode
+  /**
+   * Fires if a user initiates a scroll gesture.*
+   */
+  onScrollBeginDrag?: (event: any) => {}
 }
 
 export default class CountryPicker extends React.Component<CountryPickerProps> {

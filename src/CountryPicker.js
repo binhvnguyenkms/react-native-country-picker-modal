@@ -82,7 +82,8 @@ export default class CountryPicker extends Component {
     hideAlphabetFilter: PropTypes.bool,
     renderFilter: PropTypes.func,
     showCallingCode: PropTypes.bool,
-    filterOptions: PropTypes.object
+    filterOptions: PropTypes.object,
+    onScrollBeginDrag: PropTypes.func,
   }
 
   static defaultProps = {
@@ -416,6 +417,9 @@ export default class CountryPicker extends Component {
                   onLayout={({ nativeEvent: { layout: { y: offset } } }) =>
                     this.setVisibleListHeight(offset)
                   }
+                  onScrollBeginDrag={(event) => {
+                    this.props.onScrollBeginDrag(event);
+                  }}
                 />
                 {!this.props.hideAlphabetFilter && (
                   <ScrollView
