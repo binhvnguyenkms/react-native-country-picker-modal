@@ -53,7 +53,7 @@ const setCountries = flagType => {
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
-setCountries()
+setCountries(FLAG_TYPES.flat)
 
 export const getAllCountries = () =>
   cca2List.map(cca2 => ({ ...countries[cca2], cca2 }))
